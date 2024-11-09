@@ -1,0 +1,47 @@
+﻿@model AccessTo.Web.Main.DataMo.Auth.SignupDataMo
+
+@{
+    ViewData["Title"] = "Sign UP";
+}
+
+<h1></h1>
+
+<div>
+    <form asp-controller="Auth" asp-action="SignUP" method="POST">
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <label asp-for="UserName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <label asp-for="Email" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="ConfirmPassword" class="form-control" />
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">ثبت نام</button>
+        </div>
+    </form>
+</div>
+
+
+
+@section Script {
+    <partial name="Partials/Validators/_JqueryValidators" />
+}

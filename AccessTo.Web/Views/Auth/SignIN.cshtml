@@ -1,0 +1,48 @@
+@model AccessTo.Web.Main.DataMo.Auth.SigninDataMo
+
+@{
+    ViewData["Title"] = "Sign IN";
+}
+
+
+<h1>@ViewBag.Title</h1>
+
+<div>
+    <form asp-controller="Auth" asp-action="SignIN" asp-route-returnTo="@ViewData["returnTo"]" method="POST">
+        
+
+        <div asp-validation-summary="ModelOnly"></div>
+
+        @if (ViewData["ErrorMessage"] != null)
+        {
+            <div class="text-danger">@ViewData["ErrorMessage"]</div>
+        }
+
+        <label asp-for="UserName" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <label asp-for="Password" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="RememberMe"></label>
+            <input asp-for="RememberMe" />
+            <span asp-validation-for="RememberMe"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">ورود</button>
+    </form>
+
+
+</div>
+
+
+@section Script {
+    <partial name="Partials/Validators/_JqueryValidators" />
+}

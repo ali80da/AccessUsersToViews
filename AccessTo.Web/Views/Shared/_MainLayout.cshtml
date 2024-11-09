@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>ACCESS - @ViewData["Title"]</title>
+
+    <!-- C-S-S -->
+    <partial name="Partials/LayoutReferences/_HeaderReferences" />
+    @await RenderSectionAsync("Css", required: false)
+</head>
+<!-- BODY -->
+<body id="mainBody" class="">
+
+    <Partial name="Partials/Layout/_Header" />
+
+    <section id="">
+        <main role="main" class="container">
+            <!-- (Render BODY) -->
+            @RenderBody()
+            <!-- End Render -->
+            <!-- Nav -->
+        </main>
+    </section>
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2020 - IdentitySample - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <!-- S-C-R-I-P-T -->
+    <partial name="Partials/LayoutReferences/_ScriptReferences" />
+    @await RenderSectionAsync("Script", required: false)
+</body>
+</html>

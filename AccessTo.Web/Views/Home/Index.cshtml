@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "HOME";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <a href="/Owner/ManageRole/MainRole" class="btn btn-primary">Roles</a>
+    <a asp-area="Owner" asp-controller="ManageUser" asp-action="MainUserManage" class="btn btn-primary">MANAGE USER</a>
+}

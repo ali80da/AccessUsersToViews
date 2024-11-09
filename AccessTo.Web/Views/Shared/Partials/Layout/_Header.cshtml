@@ -1,0 +1,80 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Access</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1 ml-auto">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="nav-item ml-auto">
+
+                            <a asp-area="" asp-controller="Auth" asp-action="SignOUT" type="submit" class="btn nav-link text-dark">خروج</a>
+
+                        </li>
+                        <li class="nav-item ml-auto">
+                            <a class="nav-link text-dark" href="#">@User.Identity.Name</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item ml-auto">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignIN">ورود</a>
+                        </li>
+                        <li class="nav-item ml-auto">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="SignUP">ثبت نام</a>
+                        </li>
+                    }
+                </ul>
+
+                <ul class="navbar-nav flex-grow-1">
+                    @*@if (User.IsInRole("Admin") || User.IsInRole("Owner") ||
+                    User.HasClaim(ClaimTypesStore.EmployeeList,true.ToString()))
+                    {
+                    <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee
+                    Management</a>
+                    </li>
+                    }*@
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">
+                                Employee
+                                Management
+                            </a>
+                        </li>
+                    }
+
+                    @* @if ((await AuthorizationService.AuthorizeAsync(User, "ClaimOrRole")).Succeeded)
+                    {
+                    <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employee
+                    Management</a>
+                    </li>
+                    } *@
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Owner" asp-controller="Role" asp-action="MainAllRoles">Main All Roles</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Owner" asp-controller="MainRole" asp-action="MainRoles">Main Roles</a>
+                        </li>
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
